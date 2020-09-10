@@ -1,0 +1,168 @@
+<template>
+  <div class="box">
+    <div class="box1">
+      <div class="font">{{city}} 美团 > {{city}}</div>
+   <div class="line">
+             <div class="word1">分类</div>
+          <button class="btn">全部</button>
+   </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "",
+  props: {
+    name: {
+      type: String,
+    },
+  },
+  components: {},
+  data() {
+    return {
+      city: "成都",
+    };
+  },
+  methods: {
+      getbanner() {
+      this.$api
+        .allCategories()
+        .then((res) => {
+          this.obj = res.data.menu;
+          console.log(res);
+
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  },
+  mounted() {},
+  watch: {},
+  computed: {},
+};
+</script>
+
+<style scoped lang='scss'>
+.box {
+  display: flex;
+  justify-content: center;
+}
+.box1 {
+  width: 1190px;
+  margin-top: 30px;
+}
+.case1 {
+  width: 950px;
+  margin-bottom: 30px;
+  background: white;
+}
+.line {
+  display: flex;
+  justify-content: space-around;
+}
+.line_1 {
+  display: flex;
+  flex-wrap: wrap;
+  width: 788px;
+
+  border-bottom: 1px solid rgb(202, 200, 200);
+}
+.line_2 {
+  display: flex;
+  flex-wrap: wrap;
+  width: 788px;
+
+  border-bottom: 1px solid rgb(202, 200, 200);
+}
+.name {
+  display: flex;
+  margin: 15px;
+  align-items: center;
+  position: relative;
+}
+.name_1 {
+  display: flex;
+  margin: 15px;
+  align-items: center;
+  position: relative;
+}
+.word1 {
+  width: 60px;
+  margin: 10px;
+}
+.btn {
+  height: 25px;
+  width: 50px;
+  margin: 10px;
+  background: #13d1be;
+  border: none;
+  color: white;
+  border-radius: 15px;
+}
+.img1 {
+  width: 10px;
+  height: 10px;
+}
+.word2 {
+  font-size: 14px;
+  color: rgb(107, 107, 107);
+  cursor: pointer;
+}
+.chest {
+  z-index: 999;
+  visibility: hidden;
+  width: 510px;
+  background: white;
+  position: absolute;
+  top: 20px;
+  left: 0px;
+  padding: 19px;
+  box-shadow: 0px 2px 2px 0px #c5c3c3;
+}
+.name_1:hover .chest {
+  visibility: visible;
+}
+.name1 {
+  display: flex;
+  align-items: center;
+}
+.font {
+  font-size: 14px;
+  display: flex;
+  margin-bottom: 10px;
+}
+.word3 {
+  color: rgb(150, 150, 150);
+}
+.font1 {
+  font-size: 14px;
+  padding: 10px;
+}
+.case2 {
+  display: flex;
+  flex-wrap: wrap;
+}
+.Name {
+  display: flex;
+  flex-wrap: wrap;
+
+  z-index: 999;
+  visibility: hidden;
+  width: 485px;
+  background: white;
+  position: absolute;
+  top: 20px;
+  left: 0px;
+  padding: 19px;
+  box-shadow: 0px 2px 2px 0px #c5c3c3;
+}
+.hot {
+  font-size: 14px;
+  padding: 10px;
+}
+.name:hover .Name {
+  visibility: visible;
+}
+</style>
